@@ -2,7 +2,7 @@
   <h1>Super Manga</h1>
 </header>
 <main>
-  <div *ngFor="let manga of mangas">
+  <div class="card" *ngFor="let manga of mangas">
     <span> <strong> {{manga.title}} </strong></span>
     <span>Anno: {{manga.year}} </span>
     <span>{{manga.isEnded ? 'concluso':'In corso' }}  </span>
