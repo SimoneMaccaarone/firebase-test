@@ -14,7 +14,17 @@ export class AppComponent {
   title = 'firebase-test';
 
   constructor(private firestore: FirestoreService) {
+
     this.firestore.getManga('eMLQmHjUbBBFOjLBcDYJ').then(manga => console.log(manga))
+
+    this.firestore.getMangas().then(mangas => {
+      for (let i = 0; i < mangas.length; i++) {
+        const element = mangas[i];
+        console.log('collection',element);
+      }
+
+    })
+
   }
 
 

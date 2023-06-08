@@ -1,5 +1,6 @@
 export interface Manga {
-  title: string
-  isEnded: boolean
-  year: number
+  id?: string;
+  title: string;
+  isEnded: boolean;
+  year: number;
 }
