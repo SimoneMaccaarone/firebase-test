@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
+import { Manga } from 'src/app/model/manga';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,15 @@ export class FirestoreService {
 
   constructor() { }
 
-  getManga(id: string) {
+  getManga(id: string): Promise<Manga | null> {
     const docRef = doc(this.db, "manga", id);
-    return getDoc(docRef)
+    return getDoc(docRef).then(document => {
+      if (document.exists()) {
+        return document.data() as Manga; 0
+      } else {
+        return null;
+      }
+    })
   }
 
 
