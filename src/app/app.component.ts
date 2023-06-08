@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from './services/firestore/firestore.service';
 import { Manga } from './model/manga';
+import { AuthService } from './services/auth/auth.service';
 
 
 
@@ -14,7 +15,7 @@ export class AppComponent {
 
   mangas: Manga[] = []
 
-  constructor(private firestore: FirestoreService) {
+  constructor(private firestore: FirestoreService,public auth:AuthService) {
 
     this.firestore.getManga('eMLQmHjUbBBFOjLBcDYJ').then(manga => console.log(manga))
 
