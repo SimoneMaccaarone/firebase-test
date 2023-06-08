@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 
 @Component({
@@ -22,7 +23,25 @@ export class AppComponent {
   };
   // Initialize Firebase
   app = initializeApp(this.firebaseConfig);
+
   db = getFirestore(this.app);
+
+
+  constructor() {
+    this.getManga();
+  }
+
+
+  getManga() {
+    const docRef = doc(this.db, "manga", "eMLQmHjUbBBFOjLBcDYJ");
+    getDoc(docRef).then(document => {
+      if (document.exists()) {
+        console.log(document.data())
+      }
+    });
+
+
+  }
 
 
 
