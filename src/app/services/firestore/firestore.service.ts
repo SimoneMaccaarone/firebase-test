@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, getDocs, getFirestore } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
-import { Manga } from 'src/app/model/manga';
+import { Manga } from 'src/app/model/manga/manga';
 import { FirebaseService } from '../firebase/firebase.service';
 
 @Injectable({

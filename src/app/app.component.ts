@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from './services/firestore/firestore.service';
-import { Manga } from './model/manga';
+import { Manga } from './model/manga/manga';
 import { AuthService } from './services/auth/auth.service';
 
 
