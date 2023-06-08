@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Firestore, doc } from 'firebase/firestore';
 import { FirestoreService } from './services/firestore/firestore.service';
 import { Manga } from './model/manga';
 
@@ -13,18 +12,19 @@ import { Manga } from './model/manga';
 export class AppComponent {
   title = 'firebase-test';
 
+  mangas: Manga[] = []
+
   constructor(private firestore: FirestoreService) {
 
     this.firestore.getManga('eMLQmHjUbBBFOjLBcDYJ').then(manga => console.log(manga))
 
-    this.firestore.getMangas().then(mangas => {
-      for (let i = 0; i < mangas.length; i++) {
-        const element = mangas[i];
-        console.log('collection',element);
-      }
-
-    })
-
+    this.firestore.getMangas().then(mangasFromDb => {
+      // for (let i = 0; i < mangas.length; i++) {
+      //   const element = mangas[i];
+      //   console.log('collection', element);
+      // }
+      this.mangas = mangasFromDb;
+    });
   }
 
 
