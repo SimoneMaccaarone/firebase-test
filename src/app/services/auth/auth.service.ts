@@ -3,6 +3,7 @@ import { FirebaseService } from '../firebase/firebase.service';
 import { getAuth, Auth, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { Subject } from 'rxjs';
+import { FirestoreService } from '../firestore/firestore.service';
 
 
 
@@ -18,14 +19,17 @@ export class AuthService {
 
   userSubject: Subject<any> = new Subject();
 
-  constructor(private firebase: FirebaseService) {
+
+  constructor(private firebase: FirebaseService, private firestore:FirestoreService) {
     this.auth = getAuth(this.firebase.app);
     this.provider = new GoogleAuthProvider();
 
 
-    onAuthStateChanged(this.auth, (user) => {
+    onAuthStateChanged(this.auth, async (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
+        const dbUser = await firestore.getUser(user.uid);
+
         console.log('auth state', user);
         this.userSubject.next(user);
       } else {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, getDocs, getFirestore } from "firebase/firestore";
+import { Firestore, collection, getDocs, getFirestore, setDoc } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import { Manga } from 'src/app/model/manga/manga';
 import { FirebaseService } from '../firebase/firebase.service';
@@ -11,9 +11,9 @@ export class FirestoreService {
 
   db: Firestore
 
-  constructor(private firebase:FirebaseService) {
-    this.db= getFirestore(this.firebase.app)
-   }
+  constructor(private firebase: FirebaseService) {
+    this.db = getFirestore(this.firebase.app)
+  }
 
   getManga(id: string): Promise<Manga | null> {
     const docRef = doc(this.db, "manga", id);
@@ -33,4 +33,28 @@ export class FirestoreService {
       return col.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Manga)
     })
   }
+
+
+  getUser(id: string): Promise<Manga | null> {
+    const docRef = doc(this.db, "user", id);
+    return getDoc(docRef).then(document => {
+      if (document.exists()) {
+        return { id: document.id, ...document.data() } as any; 0
+      } else {
+        return null;
+      }
+    })
+  }
+
+
+  saveUser(user: any){
+    const docRef = doc(this.db, "user", user.uid);
+    return setDoc(docRef,user)
+    .then(()=> console.log('utente salvato'))
+    .catch((err)=>console.log(err))
+  }
+
+  // dbUserSubject: Subject<any> = new Subject();
+
+
 }
