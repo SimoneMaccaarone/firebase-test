@@ -26,14 +26,12 @@ export class AuthService {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
-        console.log('auth state', user)
+        console.log('auth state', user);
         this.userSubject.next(user);
-        // const uid = user.uid;
-
       } else {
         // User is signed out
-        this.userSubject.next(null)
-        console.log('nessuno è loggato')
+        this.userSubject.next(null);
+        console.log('nessuno è loggato');
       }
     });
 
@@ -44,6 +42,7 @@ export class AuthService {
 
 
   signIn() {
+    console.log('PIPOOOO',this.auth)
     signInWithPopup(this.auth, this.provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -62,7 +61,6 @@ export class AuthService {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
       });
   }
 

@@ -4,11 +4,14 @@
 </header> -->
 
 <app-header></app-header>
+<div class="container">
 
-<main>
-  <div class="card" *ngFor="let manga of mangas">
-    <span> <strong> {{manga.title}} </strong></span>
-    <span>Anno: {{manga.year}} </span>
-    <span>{{manga.isEnded ? 'concluso':'In corso' }}  </span>
-  </div>
-</main>
+  <main>
+    <div class="card" *ngFor="let manga of mangas">
+      <span> <strong> {{manga.title}} </strong></span>
+      <span>Anno: {{manga.year}} </span>
+      <span>{{manga.isEnded ? 'concluso':'In corso' }}  </span>
+    </div>
+  </main>
+  
+</div>

@@ -23,6 +23,13 @@ header {
   flex-direction: column;
 }
 
-user-data{
+.user-data{
   display: flex;
+}
+
+.user-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+
 }
