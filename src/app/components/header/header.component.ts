@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.userSubject.subscribe({
-      next: user=> this.auth =user,
+      next: user=> this.user = user,
       error: err=> console.log(err)
     });
   }
