@@ -36,7 +36,7 @@ export class FirestoreService {
 
 
   getUser(id: string): Promise<Manga | null> {
-    const docRef = doc(this.db, "user", id);
+    const docRef = doc(this.db, "users", id);
     return getDoc(docRef).then(document => {
       if (document.exists()) {
         return { id: document.id, ...document.data() } as any; 0
@@ -48,8 +48,8 @@ export class FirestoreService {
 
 
   saveUser(user: any){
-    const docRef = doc(this.db, "user", user.uid);
-    return setDoc(docRef,user)
+    const docRef = doc(this.db, "users", user.uid);
+    return setDoc(docRef,{email: user.email})
     .then(()=> console.log('utente salvato'))
     .catch((err)=>console.log(err))
   }

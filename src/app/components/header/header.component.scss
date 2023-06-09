@@ -25,11 +25,14 @@ header {
 
 .user-data{
   display: flex;
+  flex-direction: column;
+  font-size: 12px;
 }
 
 .user-img{
+  margin: 5px;
   width: 50px;
   height: 50px;
-  border-radius: 20px;
+  border-radius: 50px;
 
 }

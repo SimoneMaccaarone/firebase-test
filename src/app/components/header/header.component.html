@@ -5,11 +5,15 @@
       <button *ngIf="!user" (click)="logIn()" >Login</button>
       <button *ngIf="user" (click)="logOut()" >Logout</button>
       <div *ngIf="user" class="user-info">
-        <img class="user-img" src="" alt="">
-        <div class="">
-          <span>name</span>
-          <span>email</span>
+        <img class="user-img" src="{{user.photoURL}}" alt="">
+        <div class="user-data">
+          <span>{{user.displayName}} </span>
+          <span>{{user.email}} </span>
         </div>
     </div>
   </div>
+  <nav>
+    <a href="">HOME</a>
+    <a *ngIf="user" href="">USER</a>
+  </nav>
 </header>

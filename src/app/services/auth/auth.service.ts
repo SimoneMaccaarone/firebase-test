@@ -30,8 +30,11 @@ export class AuthService {
         // User is signed in, see docs for a list of available properties
         const dbUser = await firestore.getUser(user.uid);
 
-        console.log('auth state', user);
+        if(!dbUser){
+          await firestore.saveUser(user)
+        }
         this.userSubject.next(user);
+        console.log('auth state', user);
       } else {
         // User is signed out
         this.userSubject.next(null);
