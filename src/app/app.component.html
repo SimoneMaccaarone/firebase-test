@@ -1,7 +1,10 @@
-<header>
+<!-- <header>
   <h1>Super Manga</h1>
   <button (click)="auth.signIn()" >Sign In</button>
-</header>
+</header> -->
+
+<app-header></app-header>
+
 <main>
   <div class="card" *ngFor="let manga of mangas">
     <span> <strong> {{manga.title}} </strong></span>

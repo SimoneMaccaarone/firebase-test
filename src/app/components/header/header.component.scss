@@ -1,0 +1,28 @@
+header {
+  padding: 1px;
+  background-color: crimson;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+
+.auth {
+  display: flex;
+  align-items: center;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+}
+
+user-data{
+  display: flex;
+}
